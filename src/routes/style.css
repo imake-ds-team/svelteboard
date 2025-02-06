@@ -1,0 +1,46 @@
+:root {
+    --header-font: Arial, Helvetica, sans-serif;
+    --text-font: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: var(--header-font);
+}
+
+h2 {
+    font-family: var(--header-font);
+}
+
+h3 {
+    font-family: var(--header-font);
+}
+
+h4 {
+    font-family: var(--header-font);
+}
+
+h5 {
+    font-family: var(--header-font);
+}
+
+h6 {
+    font-family: var(--header-font);
+}
+
+a {
+    text-decoration: underline;
+    font-family: var(--text-font);
+}
+
+p {
+    font-family: var(--text-font);
+}
+
+a:visited {
+    color:darkslategrey;
+}
+
+a:link {
+    color:orchid;
+}
+

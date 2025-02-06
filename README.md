@@ -19,3 +19,4 @@ echo IMAGEBOARD_NAME="insert_name_here" >> .env
 echo IMAGEBOARD_DESCRIPTION="insert description here" >> .env
 echo SUPABASE_KEY="insert supabase anon key here" >> .env
 ```
+
