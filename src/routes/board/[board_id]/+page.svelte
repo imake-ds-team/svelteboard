@@ -9,24 +9,16 @@
 </svelte:head>
 
 {#each data.board_threads as thread}
-    <div class="grid grid-rows-2 post my-2">
-        <div class="grid grid-cols-3 text-center">
-            <div>
-                <p>{thread.gtripcode}</p>
-            </div>
-            <div>
-                <h3>
-                    <a href="{data.board_abbr}/{thread.id}/">{thread.title}</a>
-                </h3>
-            </div>
-
-            <div>
-                <p>{thread.inserted_at}</p>
-            </div>
-        </div>
-        <div>
-            <p>{thread.content}</p>
-            <a href="/">Reply</a>
-        </div>
+    <div class="post p-2 w-fit">
+        <p>{thread.gtripcode}</p>
+        <a href="{data.board_abbr}/{thread.id}/">{thread.title}</a>
+        <p>{thread.inserted_at}</p>
+        <img
+            src={thread.image_url}
+            class="post-image"
+            alt="Image for thread titled '{thread.title}'"
+        />
+        <p>{thread.content}</p>
+        <a href="/">Reply</a>
     </div>
 {/each}

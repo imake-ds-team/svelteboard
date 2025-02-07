@@ -17,8 +17,8 @@
 				>{/each}
 		</p>
 	</div>
-	<div>{@render children()}</div>
-	<div class="sticky top-[100vh] text-center mb-5">
+	<div class="flex-grow">{@render children()}</div>
+	<div class="text-center mb-5">
 		<p><span><a href="/rules/">rules</a></span><span><a href="https://github.com/imake-ds-team/svelteboard">svelteboard</a></span></p>
 	</div>
 </div>

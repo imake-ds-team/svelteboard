@@ -55,7 +55,8 @@ create table threads (
   content text not null,
   replies jsonb null,
   gtripcode text null,
-  board not null
+  board not null,
+  image_url text null
 );
 
 alter table threads enable row level security;

@@ -9,7 +9,7 @@
     <title>/{data.board_abbr}/: {data.board_name}</title>
 </svelte:head>
 
-<div class="flex h-screen">
+<div class="">
     <div class="container container-sm p-10 m-auto text-center">
         <div>
             <h1 class="text-3xl">
@@ -37,7 +37,7 @@
                 ></textarea>
                 <br />
                 <input
-                    type="text"
+                    type="password"
                     placeholder="Password (for tripcode)"
                     name="tripcode-password"
                     class="w-full"

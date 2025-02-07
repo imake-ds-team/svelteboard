@@ -7,7 +7,7 @@ export const prerender = true;
 export const ssr = true;
 export const csr = false;
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, url }) => {
     const given_board_abbr = params.board_id;
     const { data, error } = await supabase.from('boards').select().eq('abbreviation', given_board_abbr).single();
     //console.log(data)
