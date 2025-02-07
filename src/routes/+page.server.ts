@@ -1,7 +1,11 @@
 import {error} from '@sveltejs/kit'
 import type { PageServerLoad } from './$types';
 import { supabase } from '$lib/supabaseClient';
-import { IMAGEBOARD_DESCRIPTION, IMAGEBOARD_NAME } from '$env/static/private';
+import { IMAGEBOARD_DESCRIPTION, IMAGEBOARD_NAME, IMAGEBOARD_WELCOME_MESSAGE } from '$env/static/private';
+
+export const prerender = true;
+export const ssr = true;
+export const csr = false;
 
 export const load: PageServerLoad = async({params}) => {
     
@@ -12,6 +16,7 @@ export const load: PageServerLoad = async({params}) => {
         
         global_name: IMAGEBOARD_NAME,
         global_description: IMAGEBOARD_DESCRIPTION,
+        global_welcome_message: IMAGEBOARD_WELCOME_MESSAGE,
         global_boards: data
     }
 }
