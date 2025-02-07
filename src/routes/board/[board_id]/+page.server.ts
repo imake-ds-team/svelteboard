@@ -12,13 +12,13 @@ export const load: PageServerLoad = async({params}) => {
     //console.log(data)
     if (data==null) { redirect(404, '/') } // board doesn't exist
     if (error) { console.error(error) } 
-    const {data:boards_data,error:boards_error} = await supabase.from('boards').select();
-    if (boards_data==null || boards_error) { redirect(500,'/')};
+    const {data:boards_data,error:boards_error} = await supabase.from('threads').select().eq("board",given_board_abbr)
+    if (boards_data==null || boards_error) { redirect(503,'/')};
     console.log(boards_data)
     return {
         board_name: data.name,
         board_abbr: data.abbreviation,
         board_description: data.description,
-        board_threads: data.threads,
+        board_threads: boards_data
     }
 }

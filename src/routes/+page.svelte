@@ -1,11 +1,16 @@
 <script lang="ts">
+    // @ts-nocheck
     import type { PageProps } from "./$types";
     let { data }: PageProps = $props();
 </script>
 
+<svelte:head>
+    <title>{data.global_name}</title>
+</svelte:head>
+
 <div class="flex h-screen">
     <div class="m-auto text-center">
-        <h1 class="text-3xl">{data.global_name}</h1>
+=        <h1 class="text-3xl">{data.global_name}</h1>
         <p>{data.global_description}</p>
         <table class="table-auto border-spacing-x-5 w-full my-5">
             <thead>
@@ -30,7 +35,7 @@
             </thead>
             <tbody>
                 {#each data.global_boards as board: Object}
-                    <tr>
+                    <tr class="odd:tr-odd">
                         <td
                             ><a href="/board/{board.abbreviation}/"
                                 >/{board.abbreviation}/</a

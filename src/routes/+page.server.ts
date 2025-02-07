@@ -10,10 +10,9 @@ export const csr = false;
 export const load: PageServerLoad = async({params}) => {
     
     const {data,error} = await supabase.from('boards').select()
-    console.log(data)
+    //console.log(data)
     if (error) { console.error(error) } 
     return {
-        
         global_name: IMAGEBOARD_NAME,
         global_description: IMAGEBOARD_DESCRIPTION,
         global_welcome_message: IMAGEBOARD_WELCOME_MESSAGE,

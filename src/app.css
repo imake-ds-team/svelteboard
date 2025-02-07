@@ -1,3 +1,176 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/utilities'
+@import 'tailwindcss/utilities';
+
+@font-face {
+    font-family: 'alte_haas_groteskregular';
+    src: url('/altehaasgroteskregular-webfont.woff2') format('woff2'),
+        url('/altehaasgroteskregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'alte_haas_groteskbold';
+    src: url('/altehaasgroteskbold-webfont.woff2') format('woff2'),
+        url('/altehaasgroteskbold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+:root {
+    --header-font: 'alte_haas_groteskbold';
+    --text-font: 'alte_haas_groteskregular';
+    --header-color: #ffffff;
+    --header-outline-color: #000000;
+    --header-outline-width: 2px;
+    --text-color: #000000;
+    --text-outline-color: #000000;
+    --text-outline-width: 0px;
+}
+
+body {
+    background-color: #f2fff5;
+    background-size: auto;
+}
+
+h1 {
+    font-family: var(--header-font);
+    color: --var(--header-color);
+    outline-color: --var(--header-outline-color);
+    outline-width: --var(--header-outline-width);
+}
+
+h2 {
+    font-family: var(--header-font);
+    color: --var(--header-color);
+    outline-color: --var(--header-outline-color);
+    outline-width: --var(--header-outline-width);
+}
+
+h3 {
+    font-family: var(--header-font);
+    color: --var(--header-color);
+    outline-color: --var(--header-outline-color);
+    outline-width: --var(--header-outline-width);
+}
+
+h4 {
+    font-family: var(--header-font);
+    color: --var(--header-color);
+    outline-color: --var(--header-outline-color);
+    outline-width: --var(--header-outline-width);
+}
+
+h5 {
+    font-family: var(--header-font);
+    color: --var(--header-color);
+    outline-color: --var(--header-outline-color);
+    outline-width: --var(--header-outline-width);
+}
+
+h6 {
+    font-family: var(--header-font);
+    color: --var(--header-color);
+    outline-color: --var(--header-outline-color);
+    outline-width: --var(--header-outline-width);
+}
+
+a {
+    text-decoration: underline;
+    font-family: var(--text-font);
+    color: --var(--text-color);
+    outline-color: --var(--text-outline-color);
+    outline-width: --var(--text-outline-width);
+}
+
+p {
+    font-family: var(--text-font);
+    color: --var(--text-color);
+    outline-color: --var(--text-outline-color);
+    outline-width: --var(--text-outline-width);
+}
+
+a:visited {
+    color: darkslategrey;
+}
+
+a:link {
+    color: orchid;
+}
+
+thead {
+    background-color: #047900;
+    color: #ffffff;
+    outline-width: 2px;
+    outline-style: double;
+    outline-color: #000000;
+}
+
+tbody {
+    background-color: #f0fff0;
+    outline-width: 2px;
+    outline-style: double;
+    outline-color: #000000;
+}
+
+.tr:nth-child(odd) {
+    background-color: #e2fde2;
+}
+
+.thread-title {
+    color: orchid;
+}
+
+button {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+button:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+button:hover {
+  background-color: #2c974b;
+}
+
+button:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+button:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+button:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
