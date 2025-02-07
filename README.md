@@ -23,17 +23,7 @@ Then, install all dependencies
 npm install
 ```
 
-Then, populate your dotenv file:
-
-```bash
-cd svelteboard
-touch .env
-echo IMAGEBOARD_NAME="'insert_name_here'" >> .env
-echo IMAGEBOARD_DESCRIPTION="'insert description here'" >> .env
-echo IMAGEBOARD_WELCOME_MESSAGE="'insert welcome message here'" >> .env
-echo SUPABASE_KEY="'insert supabase anon key here'" >> .env
-echo PROJECT_URL="'insert supabase project url here'" >> .env
-```
+Then, rename `.env.example` to `.env` and thats where all of your configurations can be found.
 
 #### Customization
 You can go to `app.css` and alter the variables there. You can also install custom fonts with a [webfont generator](https://www.fontsquirrel.com/tools/webfont-generator). I like to get my fonts for free from [Dafont](https://www.dafont.com/).

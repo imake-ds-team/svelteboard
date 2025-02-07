@@ -29,6 +29,10 @@
     --text-color: #000000;
     --text-outline-color: #000000;
     --text-outline-width: 0px;
+    --primary-color: #047900;
+    --primary-color-dark: #035c00;
+    --secondary-color: #a4ffa1;
+    --link-color: #00790a;
 }
 
 body {
@@ -98,15 +102,19 @@ a:visited {
 }
 
 a:link {
-    color: orchid;
+    color: var(--link-color);
 }
 
 thead {
-    background-color: #047900;
+    background-color: var(--primary-color);
     color: #ffffff;
     outline-width: 2px;
     outline-style: double;
     outline-color: #000000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 tbody {
@@ -114,6 +122,10 @@ tbody {
     outline-width: 2px;
     outline-style: double;
     outline-color: #000000;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .tr:nth-child(odd) {
@@ -121,12 +133,36 @@ tbody {
 }
 
 .thread-title {
-    color: orchid;
+    color: var(--primary-color);
 }
+
+.navbar {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    outline: none;
+    border-bottom: 2px solid var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+    box-shadow: 0 0 10px var(--primary-color-dark);
+    a {
+        text-decoration: underline;
+        font-family: var(--text-font);
+        color: #ffffff;
+        outline-color: --var(--text-outline-color);
+        outline-width: --var(--text-outline-width);
+    }
+    a:visited {
+        color: #ffffff;
+    }
+    
+    a:link {
+        color: #ffffff;
+    }
+}
+
 
 button {
   appearance: none;
-  background-color: #2ea44f;
+  background-color: var(--primary-color);
   border: 1px solid rgba(27, 31, 35, .15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
@@ -134,7 +170,7 @@ button {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-family: var(--text-font);
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
@@ -173,4 +209,10 @@ button:disabled {
 button:active {
   background-color: #298e46;
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+span {
+    white-space: pre;
+    margin-left: 2px;
+    margin-right: 2px;
 }

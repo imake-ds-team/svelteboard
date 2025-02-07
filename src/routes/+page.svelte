@@ -9,10 +9,10 @@
 </svelte:head>
 
 <div class="flex h-screen">
-    <div class="m-auto text-center">
-=        <h1 class="text-3xl">{data.global_name}</h1>
+    <div class="container container-sm m-auto px-10 sm:p-5 text-center">
+        <h1 class="text-3xl">{data.global_name}</h1>
         <p>{data.global_description}</p>
-        <table class="table-auto border-spacing-x-5 w-full my-5">
+        <table class="table-auto border-spacing-x-5 w-full my-5 "  >
             <thead>
                 <tr>
                     <th>Welcome!</th>

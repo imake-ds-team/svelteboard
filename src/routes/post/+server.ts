@@ -2,8 +2,8 @@
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import tripcode from 'tripcode';
-import { decode } from 'base64-arraybuffer'
 import { supabase } from '$lib/supabaseClient';
+
 
 export const POST: RequestHandler = async ({ url, request }) => {
     let body = await request.formData();
@@ -13,7 +13,16 @@ export const POST: RequestHandler = async ({ url, request }) => {
     const tripcode_password = body.get("tripcode-password");
     const image = body.get("image-content");
 
-    const { data: allBuckets, error } = await supabase
+    if (image.size > 10 * 1024 * 1024) {
+        return new Response({status:403});
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(image)
+
+    console.log(image)
+
+    const { data: allBuckets, error: allBucketsError } = await supabase
         .storage
         .listBuckets()
 
@@ -26,19 +35,14 @@ export const POST: RequestHandler = async ({ url, request }) => {
                 allowedMimeTypes: ['image/*'],
                 fileSizeLimit: 8096
             })
-    }
-
-
-    const { data, error } = await supabase
-        .storage
-        .from('threads-uploads')
-        .upload('public/avatar1.png', decode('base64FileData'), {
-            contentType: 'image/*'
+        .then(()=>{
+            console.log("threads-uploads bucket created! Continuing...")
         })
+    }
 
     const board = url.searchParams.get("board");
 
-    if (title == null || content == null || tripcode_password == null) { return new Response() }
+    if (title == null || content == null || tripcode_password == null) { return new Response({status:403}) }
     let generated_tripcode = tripcode(tripcode_password);
 
     const { data, error } = await supabase
@@ -49,5 +53,5 @@ export const POST: RequestHandler = async ({ url, request }) => {
     console.log(data);
     console.log(error);
 
-    return new Response();
+    return new Response({status:303});
 };
