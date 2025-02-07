@@ -21,8 +21,8 @@
 }
 
 :root {
-    --header-font: 'alte_haas_groteskbold';
-    --text-font: 'alte_haas_groteskregular';
+    --header-font: 'alte_haas_groteskbold', 'sans-serif';
+    --text-font: 'alte_haas_groteskregular', 'sans-serif';
     --header-color: #ffffff;
     --header-outline-color: #000000;
     --header-outline-width: 2px;
@@ -110,18 +110,19 @@ thead {
     color: #ffffff;
     outline-width: 2px;
     outline-style: double;
-    outline-color: #000000;
+    outline-color: var(--primary-color-dark);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    
 }
 
 tbody {
     background-color: #f0fff0;
     outline-width: 2px;
     outline-style: double;
-    outline-color: #000000;
+    outline-color: var(--primary-color-dark);
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 5px;
@@ -215,4 +216,13 @@ span {
     white-space: pre;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+.post {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    outline: none;
+    border-radius: 5px;
+    border-color: var(--primary-color-dark);
+    box-shadow: 0 0 10px var(--primary-color-dark);
 }

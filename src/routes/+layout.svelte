@@ -1,6 +1,6 @@
 <script lang="ts">
-	import "../app.css";
 	import type { LayoutProps } from "./$types";
+	import '../app.css'
 	let { data, children }: LayoutProps = $props();
 </script>
 
@@ -11,7 +11,7 @@
 			<span><a href="/admin/">admin</a></span>
 			{#each data.global_boards as board}
 				<span
-					><a href="{board.abbreviation}/"
+					><a href="/board/{board.abbreviation}/"
 						>/{board.abbreviation}/</a
 					></span
 				>{/each}
