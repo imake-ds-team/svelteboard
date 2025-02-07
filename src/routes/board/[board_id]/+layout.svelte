@@ -21,7 +21,7 @@
             <form
                 class="p-5 w-1/2 mx-auto"
                 method="POST"
-                action="/post/?board={data.board_abbr}"
+                action="/post?board={data.board_abbr}"
                 enctype="multipart/form-data"
             >
                 
@@ -30,10 +30,12 @@
                     placeholder="Thread title"
                     name="title"
                     class="w-full"
+                    minlength="5"
+                    maxlength="99"
                     required
                 />
                 <br />
-                <textarea class="w-full" name="content" placeholder="Thread content" required
+                <textarea class="w-full" name="content" placeholder="Thread content" minlength="10" maxlength="1200" required
                 ></textarea>
                 <br />
                 <input
@@ -43,7 +45,7 @@
                     class="w-full"
                 />
                 <br />
-                <input type="file" name="image-content" accept="image/*"/>
+                <input type="file" name="image-content" accept="image/*" required/>
                 <br />
                 <button class="btn" type="submit">Post</button>
             </form>

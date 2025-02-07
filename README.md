@@ -61,8 +61,9 @@ create table threads (
 
 alter table threads enable row level security;
 
-create policy "Enable read access for all users" on "public"."threads" to public using (true);
-create policy "Allow anyone to insert" on "public"."threads" to public with check (true);
+create policy "Enable read access for all users" on "public"."threads" for read to public using (true);
+create policy "Allow anyone to insert" on "public"."threads" for insert to public with check (true);
+create policy "Allow anyone to delete" on "public"."threads" for delete with check (true);
 ```
 
 and create your table for posts:
@@ -74,14 +75,14 @@ create table posts (
   content text not null,
   image_link text not null,
   parent_thread_id text not null,
-  parent_thread_board text not null,
-  replying_to text null
+  parent_thread_board text not null
 );
 
 alter table posts enable row level security;
 
-create policy "Enable read access for all users" on "public"."posts" to public using (true);
-create policy "Allow anyone to insert" on "public"."posts" to public with check (true);
+create policy "Enable read access for all users" on "public"."posts" for read to public using (true);
+create policy "Allow anyone to insert" on "public"."posts" for insert to public with check (true);
+create policy "Allow anyone to delete" on "public"."posts" for delete with check (true);
 ```
 
 Finally, create a new bucket called `threads-uploads`, make it public, with the accepted MIME type being all images, with whatever file upload limit you want. Return to your SQL editor and run

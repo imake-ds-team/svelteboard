@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import tripcode from 'tripcode';
 import { supabase } from '$lib/supabaseClient';
@@ -15,8 +15,12 @@ export const POST: RequestHandler = async ({ url, request }) => {
     const image = body?.get("image-content") as File;
     let extension = image.name.split('.').pop();
 
+    if (!image) {
+        return new Response({ content: "No image", status: 403 })
+    }
+
     if (image.size > 10 * 1024 * 1024) {
-        return new Response({ status: 403 });
+        return new Response({ content: "Image too large", status: 403 });
     }
 
     const { data: allBuckets, error: allBucketsError } = await supabase
@@ -39,10 +43,8 @@ export const POST: RequestHandler = async ({ url, request }) => {
 
     const board = url.searchParams.get("board");
 
-    if (title == null || content == null || tripcode_password == null) { return new Response({ status: 403 }) }
+    if (title == null || content == null || tripcode_password == null) { throw redirect(303,`/${data.board}/`); }
     let generated_tripcode = tripcode(tripcode_password);
-
-
 
     const { data, error } = await supabase
         .from('threads')
@@ -70,6 +72,5 @@ export const POST: RequestHandler = async ({ url, request }) => {
         .from('threads')
         .update({ image_url: bucket_url_data.publicUrl })
         .eq('id', data.id)
-
-    return new Response({ status: 303 });
+    throw redirect(303,`/board/${data.board}/`);
 };

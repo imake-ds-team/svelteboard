@@ -80,14 +80,14 @@
                         </thead>
                         <tbody>
                             {#each data.global_new_threads as thread}
-                                <tr class="odd:tr-odd">
+                                <tr class="odd:tr-odd" style="max-width:100%;">
                                     <td
                                         ><a href="/board/{thread.board}/"
                                             >/{thread.board}/</a
                                         ></td
                                     >
                                     <td>{thread.title}</td>
-                                    <td>{thread.content}</td>
+                                    <td><p>{thread.content}</p></td>
                                     <td>{thread.gtripcode}</td>
                                 </tr>
                             {/each}
