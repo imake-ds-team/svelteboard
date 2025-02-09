@@ -49,6 +49,19 @@
                 <br />
                 <button class="btn" type="submit">Post</button>
             </form>
+            {#if data.error !== ""}
+                <p class="error">
+                    {#if data.error === "2"}
+                        Please fill out everything!
+                    {:else if data.error === "1"}
+                        Image is too large! Must be lesser than 10MB!
+                    {:else if data.error === "3"}
+                        Serverside error, please inform admin!
+                    {:else if data.error === "4"}
+                        Incorrect tripcode!
+                    {/if}
+                </p>
+            {/if}
         </div>
         <div class="text-start mx-auto">
             {@render children()}

@@ -58,7 +58,6 @@ create table threads (
   inserted_at timestamp with time zone default timezone ('utc'::text, now()) not null,
   title text not null,
   content text not null,
-  replies jsonb null,
   gtripcode text null,
   board not null,
   image_url text null

@@ -61,7 +61,7 @@
                             <tr>
                                 <th>Board</th>
                                 <th>Parent thread</th>
-                                <th>Post</th>
+                                <th>Reply</th>
                                 <th>Author</th>
                             </tr>
                         </thead>

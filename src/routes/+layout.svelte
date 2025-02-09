@@ -9,7 +9,6 @@
 		<p>
 			<span class="text-left"
 				><a href="/">home</a>
-				<a href="/admin/">admin</a>
 				|
 			</span>
 			<span>

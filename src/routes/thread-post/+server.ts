@@ -7,6 +7,7 @@ import { decode } from 'base64-arraybuffer'
 
 
 export const POST: RequestHandler = async ({ url, request }) => {
+    const board = url.searchParams.get("board");
 
     let body = await request.formData();
     const title = body?.get("title");
@@ -16,11 +17,11 @@ export const POST: RequestHandler = async ({ url, request }) => {
     let extension = image.name.split('.').pop();
 
     if (!image) {
-        return new Response({ content: "No image", status: 403 })
+        throw redirect(303, `/${board}/?error=2`)
     }
 
     if (image.size > 10 * 1024 * 1024) {
-        return new Response({ content: "Image too large", status: 403 });
+        throw redirect(303, `/${board}/?error=1`)
     }
 
     const { data: allBuckets, error: allBucketsError } = await supabase
@@ -41,9 +42,9 @@ export const POST: RequestHandler = async ({ url, request }) => {
             })
     }
 
-    const board = url.searchParams.get("board");
 
-    if (title == null || content == null || tripcode_password == null) { throw redirect(303,`/${data.board}/`); }
+
+    if (title == null || content == null || tripcode_password == null) { throw redirect(303, `/${board}/?error=2`) }
     let generated_tripcode = tripcode(tripcode_password);
 
     const { data, error } = await supabase
@@ -60,7 +61,8 @@ export const POST: RequestHandler = async ({ url, request }) => {
         })
 
     if (bucket_upload_error) {
-        console.error(bucket_upload_error)
+        console.error(bucket_upload_error);
+        throw redirect(303, `/${board}/?error=3`)
     }
 
     const { data: bucket_url_data } = supabase
@@ -72,5 +74,9 @@ export const POST: RequestHandler = async ({ url, request }) => {
         .from('threads')
         .update({ image_url: bucket_url_data.publicUrl })
         .eq('id', data.id)
-    throw redirect(303,`/board/${data.board}/`);
+
+    if (thread_update_error) {
+        throw redirect(303, `/${board}/?error=3`)
+    }
+    throw redirect(303, `/board/${data.board}/`);
 };

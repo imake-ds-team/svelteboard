@@ -19,7 +19,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
         board_name: data.name,
         board_abbr: data.abbreviation,
         board_description: data.description,
-        board_threads: boards_data
+        board_threads: boards_data,
     }
 }
 

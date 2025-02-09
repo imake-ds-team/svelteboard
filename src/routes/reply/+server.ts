@@ -47,7 +47,7 @@ export const POST: RequestHandler = async ({ url, request }) => {
             })
     }
 
-    if (content == null) { throw redirect(303, `/${data.board}/`); }
+    if (content == null) { throw redirect(303, `/board/${board}/?error=2`) }
     let generated_tripcode = tripcode(tripcode_password);
 
     const { data, error } = await supabase
@@ -55,8 +55,6 @@ export const POST: RequestHandler = async ({ url, request }) => {
         .insert({ content: content, gtripcode: generated_tripcode, parent_thread_board: board, parent_thread_id: id, image_url: "" })
         .select()
         .single()
-
-    console.log(data);
 
     if (image.size > 0) {
         const { data: bucket_upload_data, error: bucket_upload_error } = await supabase
@@ -67,7 +65,8 @@ export const POST: RequestHandler = async ({ url, request }) => {
             })
 
         if (bucket_upload_error) {
-            console.error(bucket_upload_error)
+            console.error(bucket_upload_error);
+            throw redirect(303, `/board/${board}/?error=3`)
         }
 
         const { data: bucket_url_data } = supabase
@@ -79,6 +78,10 @@ export const POST: RequestHandler = async ({ url, request }) => {
             .from('posts')
             .update({ image_url: bucket_url_data.publicUrl })
             .eq('id', data.id)
+
+        if(thread_update_error) {
+            throw redirect(303, `/board/${board}/?error=3`)
+        }
     }
     throw redirect(303, `/board/${board}/${id}/`);
 };
