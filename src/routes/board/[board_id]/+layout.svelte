@@ -47,9 +47,6 @@
                 <br />
                 <input type="file" name="image-content" accept="image/*" required/>
                 <br />
-                {@html data.captcha_svg}
-                <input name="captcha-answer" placeholder="CAPTCHA answer..." required/>
-                <br />
                 <button class="btn" type="submit">Post</button>
             </form>
             {#if data.error !== ""}
