@@ -70,6 +70,12 @@ on threads for select
 to anon
 using ( true );
 
+create policy "Anyone can update threads."
+on threads for update
+to anon
+using ( true )
+with check ( true );
+
 create policy "Anyone can insert threads."
 on threads for insert
 to anon
@@ -103,6 +109,12 @@ using ( true );
 create policy "Anyone can insert posts."
 on posts for insert
 to anon
+with check ( true );
+
+create policy "Anyone can update posts."
+on posts for update
+to anon
+using ( true )
 with check ( true );
 
 create policy "Anyone can delete posts."
