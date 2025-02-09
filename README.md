@@ -39,7 +39,7 @@ create table boards (
   inserted_at timestamp with time zone default timezone ('utc'::text, now()) not null,
   name text unique not null,
   abbreviation text unique not null,
-  description text not null,
+  description text not null
 );
 
 alter table boards enable row level security;
@@ -73,7 +73,7 @@ using ( true );
 create policy "Anyone can insert threads."
 on threads for insert
 to anon
-using ( true );
+with check ( true );
 
 create policy "Anyone can delete threads."
 on threads for delete
@@ -103,7 +103,7 @@ using ( true );
 create policy "Anyone can insert posts."
 on posts for insert
 to anon
-using ( true );
+with check ( true );
 
 create policy "Anyone can delete posts."
 on posts for delete
