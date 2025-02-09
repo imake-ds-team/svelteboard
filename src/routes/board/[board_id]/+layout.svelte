@@ -17,7 +17,7 @@
             </h1>
             <p><strong>{data.board_description}</strong></p>
         </div>
-        <div>
+        <div class="text-center">
             <form
                 class="p-5 w-1/2 mx-auto"
                 method="POST"
@@ -46,6 +46,9 @@
                 />
                 <br />
                 <input type="file" name="image-content" accept="image/*" required/>
+                <br />
+                {@html data.captcha_svg}
+                <input name="captcha-answer" placeholder="CAPTCHA answer..." required/>
                 <br />
                 <button class="btn" type="submit">Post</button>
             </form>

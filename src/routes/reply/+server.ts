@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 /**
  * @author Gray
  * @description RESTful API for thread replies.
@@ -12,7 +11,6 @@ import { error, redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import tripcode from 'tripcode';
 import { supabase } from '$lib/supabaseClient';
-import { decode } from 'base64-arraybuffer'
 
 
 export const POST: RequestHandler = async ({ url, request }) => {

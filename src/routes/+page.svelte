@@ -91,7 +91,7 @@
                             <tr>
                                 <th>Board</th>
                                 <th>Title</th>
-                                <th>Content</th>
+                                <th>Image</th>
                                 <th>Author</th>
                             </tr>
                         </thead>

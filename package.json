@@ -29,6 +29,7 @@
 		"@supabase/supabase-js": "^2.48.1",
 		"base64-arraybuffer": "^1.0.2",
 		"formidable": "^3.5.2",
+		"svg-captcha": "^1.4.0",
 		"tripcode": "^4.0.0"
 	}
 }

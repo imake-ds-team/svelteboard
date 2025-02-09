@@ -17,11 +17,11 @@ export const POST: RequestHandler = async ({ url, request }) => {
     let extension = image.name.split('.').pop();
 
     if (!image) {
-        throw redirect(303, `/${board}/?error=2`)
+        throw redirect(303,`/${board}/?error=2`)
     }
 
     if (image.size > 10 * 1024 * 1024) {
-        throw redirect(303, `/${board}/?error=1`)
+        throw redirect(303,`/${board}/?error=1`)
     }
 
     const { data: allBuckets, error: allBucketsError } = await supabase
@@ -42,14 +42,14 @@ export const POST: RequestHandler = async ({ url, request }) => {
             })
     }
 
+    
 
-
-    if (title == null || content == null || tripcode_password == null) { throw redirect(303, `/${board}/?error=2`) }
+    if (title == null || content == null || tripcode_password == null) { throw redirect(303,`/${board}/?error=2`) }
     let generated_tripcode = tripcode(tripcode_password);
 
     const { data, error } = await supabase
         .from('threads')
-        .insert({ title: title, content: content, replies: {}, gtripcode: generated_tripcode, board: board })
+        .insert({ title: title, content: content, gtripcode: generated_tripcode, board: board })
         .select()
         .single()
 
@@ -62,7 +62,7 @@ export const POST: RequestHandler = async ({ url, request }) => {
 
     if (bucket_upload_error) {
         console.error(bucket_upload_error);
-        throw redirect(303, `/${board}/?error=3`)
+        throw redirect(303,`/${board}/?error=3`)
     }
 
     const { data: bucket_url_data } = supabase
@@ -75,8 +75,8 @@ export const POST: RequestHandler = async ({ url, request }) => {
         .update({ image_url: bucket_url_data.publicUrl })
         .eq('id', data.id)
 
-    if (thread_update_error) {
-        throw redirect(303, `/${board}/?error=3`)
+    if(thread_update_error) {
+        throw redirect(303,`/${board}/?error=2`)
     }
-    throw redirect(303, `/board/${data.board}/`);
+    throw redirect(303,`/board/${data.board}/`);
 };
