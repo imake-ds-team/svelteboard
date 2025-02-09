@@ -29,10 +29,10 @@
     --text-color: #000000;
     --text-outline-color: #000000;
     --text-outline-width: 0px;
-    --primary-color: #047900;
-    --primary-color-dark: #035c00;
-    --secondary-color: #a4ffa1;
-    --link-color: #00790a;
+    --primary-color: #ff4bd2;
+    --primary-color-dark: #c73ba4;
+    --secondary-color: hwb(315 73% 0%);
+    --link-color: #8462ff;
 }
 
 body {

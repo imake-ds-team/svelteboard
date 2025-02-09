@@ -118,3 +118,11 @@ CREATE POLICY "Permissive Policy qo2jqm_0" ON storage.objects FOR INSERT TO publ
 CREATE POLICY "Permissive Policy qo2jqm_1" ON storage.objects FOR SELECT TO public USING (bucket_id = 'threads-uploads');
 CREATE POLICY "Permissive Policy qo2jqm_2" ON storage.objects FOR DELETE TO public USING (bucket_id = 'threads-uploads');
 ```
+
+### How do I...
+
+#### Add new boards?
+Go to your `boards` table and create a new row.
+
+#### Delete threads/replies?
+Take your `ADMIN_PASSWORD` and delete threads/replies with that. The tripcode form accepts the correct tripcode AND the `ADMIN_PASSWORD`.

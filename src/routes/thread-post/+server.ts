@@ -16,7 +16,7 @@ export const POST: RequestHandler = async ({ url, request }) => {
     const image = body?.get("image-content") as File;
     let extension = image.name.split('.').pop();
 
-    if (!image) {
+    if (image.size == 0) {
         throw redirect(303,`/${board}/?error=2`)
     }
 
@@ -49,7 +49,7 @@ export const POST: RequestHandler = async ({ url, request }) => {
 
     const { data, error } = await supabase
         .from('threads')
-        .insert({ title: title, content: content, gtripcode: generated_tripcode, board: board })
+        .insert({ title: title, content: content, gtripcode: generated_tripcode, board: board, image_url: "" })
         .select()
         .single()
 
