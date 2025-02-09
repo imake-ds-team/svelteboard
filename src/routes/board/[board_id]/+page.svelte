@@ -13,7 +13,7 @@
         <div class="dropdown absolute float-end">
             <span>...</span>
             <div class="dropdown-content w-fit">
-                <form action="/delete?id={thread.id}" method="POST">
+                <form action="/thread-delete?id={thread.id}" method="POST">
                     <input type="password" name="tripcode-password" placeholder="Tripcode password (for thread deletion)">
                     <button type="submit">Delete</button>
                 </form>
@@ -40,6 +40,5 @@
             alt="Image for thread titled '{thread.title}'"
         />
         <p>{thread.content}</p>
-        <a href="/">Reply</a>
     </div>
 {/each}

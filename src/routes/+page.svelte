@@ -62,10 +62,27 @@
                                 <th>Board</th>
                                 <th>Parent thread</th>
                                 <th>Post</th>
-                                <th>Tripcode</th>
+                                <th>Author</th>
                             </tr>
                         </thead>
-                        <tbody> </tbody>
+                        <tbody> 
+                            {#each data.global_new_posts as post}
+                            <tr class="odd:tr-odd" style="max-width:100%;">
+                                <td
+                                    ><a href="/board/{post.parent_thread_board}/"
+                                        >/{post.parent_thread_board}/</a
+                                    ></td
+                                >
+                                <td><a href="/board/{post.parent_thread_board}/{post.parent_thread_id}/">No. {post.parent_thread_id}</a></td>
+                                <td><p>{post.content}</p></td>
+                                {#if post.gtripcode == null}
+                                    <td>{post.gtripcode}</td>
+                                {:else}
+                                    <td>Anonymous</td>
+                                {/if}
+                            </tr>
+                        {/each}
+                        </tbody>
                     </table>
                 </div>
                 <div class="">
@@ -75,7 +92,7 @@
                                 <th>Board</th>
                                 <th>Title</th>
                                 <th>Content</th>
-                                <th>Tripcode</th>
+                                <th>Author</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,7 +105,11 @@
                                     >
                                     <td>{thread.title}</td>
                                     <td><p>{thread.content}</p></td>
-                                    <td>{thread.gtripcode}</td>
+                                    {#if thread.gtripcode == null}
+                                        <td>{thread.gtripcode}</td>
+                                    {:else}
+                                        <td>Anonymous</td>
+                                    {/if}
                                 </tr>
                             {/each}
                         </tbody>

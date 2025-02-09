@@ -13,12 +13,16 @@ export const load: PageServerLoad = async ({ params }) => {
     if (data == null) { throw redirect(307, '/') } // board doesn't exist
     if (error) { console.error(error) }
     const { data: threads_data, error: threads_error } = await supabase.from('threads').select().eq("id", thread_id).maybeSingle();
-    if (threads_data == null || threads_error) { throw redirect(307, '/') };
+    if (threads_data == null || threads_error) { throw redirect(303, '/') };
     //console.log(threads_data)
+    const { data: posts_data, error: posts_error } = await supabase.from('posts').select().eq("parent_thread_id",thread_id);
+    if (posts_data == null || posts_error) { console.log(posts_error); throw redirect(303, '/') };
     return {
         board_name: data.name,
         board_abbr: data.abbreviation,
         board_description: data.description,
-        thread: threads_data
+        thread: threads_data,
+        thread_id: thread_id,
+        posts: posts_data
     }
 }

@@ -21,7 +21,7 @@
             <form
                 class="p-5 w-1/2 mx-auto"
                 method="POST"
-                action="/post?board={data.board_abbr}"
+                action="/thread-post?board={data.board_abbr}"
                 enctype="multipart/form-data"
             >
                 
