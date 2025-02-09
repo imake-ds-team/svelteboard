@@ -27,24 +27,6 @@ export const POST: RequestHandler = async ({ url, request }) => {
         throw redirect(308,`/board/${board}/${id}?error=1`)
     }
 
-    const { data: allBuckets, error: allBucketsError } = await supabase
-        .storage
-        .listBuckets()
-
-    if (allBuckets == null) { // Means we'll have to create a bucket for images to go into. HAWK TUAH!!!
-        console.warn("threads-uploads bucket does not exist! Creating now...");
-        const { data, error } = await supabase
-            .storage
-            .createBucket('threads-uploads', {
-                public: true,
-                allowedMimeTypes: ['image/*'],
-                fileSizeLimit: 8096
-            })
-            .then(() => {
-                console.log("threads-uploads bucket created! Continuing...")
-            })
-    }
-
     if (content == null) { throw redirect(303, `/board/${board}/?error=2`) }
     let generated_tripcode = tripcode(tripcode_password);
 
@@ -53,6 +35,7 @@ export const POST: RequestHandler = async ({ url, request }) => {
         .insert({ content: content, gtripcode: generated_tripcode, parent_thread_board: board, parent_thread_id: id, image_url: "" })
         .select()
         .single()
+        
 
     if (image.size > 0) {
         const { data: bucket_upload_data, error: bucket_upload_error } = await supabase

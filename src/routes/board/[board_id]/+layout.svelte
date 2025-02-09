@@ -29,23 +29,23 @@
                     type="text"
                     placeholder="Thread title"
                     name="title"
-                    class="w-full"
+                    class="w-full mb-2"
                     minlength="5"
                     maxlength="99"
                     required
                 />
                 <br />
-                <textarea class="w-full" name="content" placeholder="Thread content" minlength="10" maxlength="1200" required
+                <textarea class="w-full mb-2" name="content" placeholder="Thread content" minlength="10" maxlength="1200" required
                 ></textarea>
                 <br />
                 <input
                     type="password"
                     placeholder="Password (for tripcode)"
                     name="tripcode-password"
-                    class="w-full"
+                    class="w-full mb-2"
                 />
                 <br />
-                <input type="file" name="image-content" accept="image/*" required/>
+                <input type="file" class="mb-2" name="image-content" accept="image/*" required/>
                 <br />
                 <button class="btn" type="submit">Post</button>
             </form>

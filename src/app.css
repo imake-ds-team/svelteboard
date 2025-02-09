@@ -29,14 +29,14 @@
     --text-color: #000000;
     --text-outline-color: #000000;
     --text-outline-width: 0px;
-    --primary-color: #ff4bd2;
-    --primary-color-dark: #c73ba4;
-    --secondary-color: hwb(315 73% 0%);
+    --primary-color: #2e2e2e;
+    --primary-color-dark: #0e0e0e;
+    --secondary-color: hwb(314 84% 3%);
     --link-color: #8462ff;
 }
 
 body {
-    background-color: #f2fff5;
+    background-color: #fff7ef;
     background-size: auto;
 }
 
@@ -105,12 +105,17 @@ a:link {
     color: var(--link-color);
 }
 
+table {
+    border-width: 2px;
+    border-style: double;
+    border-color: var(--primary-color-dark);
+    border-radius: 5px;
+}
+
 thead {
     background-color: var(--primary-color);
     color: #ffffff;
-    outline-width: 2px;
-    outline-style: double;
-    outline-color: var(--primary-color-dark);
+
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 0px;
@@ -120,9 +125,6 @@ thead {
 
 tbody {
     background-color: #f0fff0;
-    outline-width: 2px;
-    outline-style: double;
-    outline-color: var(--primary-color-dark);
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 5px;
@@ -132,10 +134,6 @@ tbody {
 tr {
     word-wrap: break-word;
     width: fit-content;
-}
-
-.tr:nth-child(odd) {
-    background-color: #e2fde2;
 }
 
 .thread-title {
@@ -274,6 +272,7 @@ span {
             height: auto;
             position: relative;
         }
+
         .post-image:hover {
             max-width: 28vw;
             height: auto;

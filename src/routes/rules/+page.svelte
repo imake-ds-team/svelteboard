@@ -21,7 +21,10 @@
             <tbody>
                 <tr>
                     <td>
-                        Your rules go here...
+                        <ol>
+                            <li>No bigotry</li>
+                            <li>No spamming</li>
+                        </ol>
                     </td>
                 </tr>
             </tbody>

@@ -8,7 +8,9 @@
 	<div class="sticky top-[0vh] navbar">
 		<p>
 			<span class="text-left"
-				><a href="/">home</a>
+				><a href="/">home</a> <a href="/rules/">rules</a> <a href="https://github.com/imake-ds-team/svelteboard"
+				>svelteboard</a
+			>
 				|
 			</span>
 			<span>
@@ -20,14 +22,5 @@
 			</span>
 		</p>
 	</div>
-	<div class="flex-grow">{@render children()}</div>
-	<div class="text-center mb-5">
-		<p>
-			<span><a href="/rules/">rules</a></span><span
-				><a href="https://github.com/imake-ds-team/svelteboard"
-					>svelteboard</a
-				></span
-			>
-		</p>
-	</div>
+	<div>{@render children()}</div>
 </div>

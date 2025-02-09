@@ -23,7 +23,7 @@
                 enctype="multipart/form-data"
             >
                 <textarea
-                    class="w-full"
+                    class="w-full mb-2"
                     name="content"
                     placeholder="Post content"
                     minlength="10"
@@ -35,10 +35,10 @@
                     type="password"
                     placeholder="Password (for tripcode)"
                     name="tripcode-password"
-                    class="w-full"
+                    class="w-full mb-2"
                 />
                 <br />
-                <input type="file" name="image-content" accept="image/*" />
+                <input type="file" class="mb-2" name="image-content" accept="image/*" />
                 <br />
                 <button class="btn" type="submit">Reply</button>
             </form>
