@@ -236,6 +236,10 @@ span {
     max-width: 100%;
 }
 
+.error {
+    color: #7e0000;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
