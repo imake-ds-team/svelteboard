@@ -4,7 +4,7 @@ import type { PageServerLoad } from './$types';
 import { supabase } from '$lib/supabaseClient';
 import { create } from 'svg-captcha';
 
-export const prerender = true;
+export const prerender = false;
 export const ssr = true;
 export const csr = false;
 

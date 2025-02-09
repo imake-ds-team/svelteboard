@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 import { supabase } from '$lib/supabaseClient';
 import { IMAGEBOARD_DESCRIPTION, IMAGEBOARD_NAME, IMAGEBOARD_WELCOME_MESSAGE } from '$env/static/private';
 
-export const prerender = true;
+export const prerender = false;
 export const ssr = true;
 export const csr = false;
 
