@@ -21,7 +21,7 @@
         </div>
         <p>
             <span class="text-sm"
-                ><a href="{data.board_abbr}/{thread.id}/">No. {thread.id}</a
+                ><a href="/board/{thread.board}/{thread.id}/">No. {thread.id}</a
                 ></span
             >
             {thread.title}

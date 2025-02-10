@@ -38,7 +38,12 @@
                     class="w-full mb-2"
                 />
                 <br />
-                <input type="file" class="mb-2" name="image-content" accept="image/*" />
+                <input
+                    type="file"
+                    class="mb-2"
+                    name="image-content"
+                    accept="image/*"
+                />
                 <br />
                 <button class="btn" type="submit">Reply</button>
             </form>
@@ -63,7 +68,7 @@
                 </div>
                 <p>
                     <span class="text-sm"
-                        ><a href="{data.board_abbr}/{data.thread.id}/"
+                        ><a href="/board/{data.thread.board}/{data.thread.id}/"
                             >No. {data.thread.id}</a
                         ></span
                     >
@@ -85,12 +90,13 @@
                 <p>{data.thread.content}</p>
             </div>
             {#each data.posts as post}
-                <div class="post my-5 p-2 w-fit">
+                <div class="post my-5 p-2 w-fit" id="{post.id}">
+                    <input type="checkbox" class="dropdown absolute float-end" id="demo"/>
                     <div class="dropdown absolute float-end">
                         <span>...</span>
                         <div class="dropdown-content w-fit">
                             <form
-                                action="/reply-delete?id={data.thread.id}"
+                                action="/reply-delete?id={post.id}"
                                 method="POST"
                             >
                                 <input
@@ -105,7 +111,8 @@
                     <p>
                         <span class="text-sm"
                             ><a
-                                href="{data.board_abbr}/{data.thread.id}#{post.id}"
+                                href="{data.board_abbr}/{data.thread
+                                    .id}#{post.id}"
                                 >No. {data.thread.id}/{post.id}</a
                             ></span
                         >
@@ -118,12 +125,22 @@
 
                     <p class="text-xs">{post.inserted_at}</p>
 
-                    {#if data.thread.image_url === ""}
-                    <img
-                        src={post.image_url}
-                        class="post-image"
-                        alt="Image for post created by '{post.gtripcode}'"
-                    />
+                    {#if data.thread.image_url}
+                        {#if post.gtripcode === ""}
+                            <img
+                                src={post.image_url}
+                                class="post-image"
+                                alt="Post created by anonymous"
+                            />
+                        {:else}
+                            <img
+                                src={post.image_url}
+                                class="post-image"
+                                alt="Post created by '{post.gtripcode}'"
+                            />
+                        {/if}
+
+                        
                     {/if}
                     <p>{post.content}</p>
                 </div>

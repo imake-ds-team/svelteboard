@@ -11,7 +11,7 @@ export const POST: RequestHandler = async ({ url, request }) => {
     const tripcode_password = body?.get("tripcode-password");
     const image = body?.get("image-content") as File;
     const id = url.searchParams.get("id");
-    const { data: post_data, error: post_error } = await supabase.from('threads').select().eq('id', id).single();
+    const { data: post_data, error: post_error } = await supabase.from('posts').select().eq('id', id).single();
     if (post_data == null) { throw redirect(303, '/') }
     if (post_data.id != id) { throw redirect(303, '/') }
     const board = post_data.parent_thread_board;
