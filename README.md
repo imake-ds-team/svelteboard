@@ -136,6 +136,14 @@ CREATE POLICY "Permissive Policy qo2jqm_1" ON storage.objects FOR SELECT TO publ
 CREATE POLICY "Permissive Policy qo2jqm_2" ON storage.objects FOR DELETE TO public USING (bucket_id = 'threads-uploads');
 ```
 
+### Building
+Run
+```bash
+npm run build
+```
+
+and your build should be in the `.svelte-kit` directory of the cloned repo! :D
+
 ### How do I...
 
 #### Add new boards?
