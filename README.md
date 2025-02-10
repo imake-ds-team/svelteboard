@@ -4,6 +4,11 @@
 
 An imageboard created with Svelte. No client-side Javascript so is safe for TOR and other applications.
 
+## Why Svelteboard?
+Other imageboard software requires that you fumble around with MariaDB, PHP, and a host of other software. With this, all you have to do is fill out your .env, type `npm install`, and run a few scripts in a Supabase instance. It's that simple.
+
+Additionally, there's no client-side Javascript in this software, making it ideal for applications like TOR, which don't permit any client-side Javascript at all.
+
 ## Deployment
 
 Deploying other people's software, especially the ones you find in their GitHub repos, is a huge pain in the ass. If something in here confuses you, please open an issue or DM me!
